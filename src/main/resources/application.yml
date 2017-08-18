@@ -1,0 +1,12 @@
+server:
+  port: 8900
+spring:
+  application:
+    name: open-broker-groovy
+  datasource:
+    url: jdbc:mysql://localhost/test
+    username: root
+    password: password
+    driverClassName: com.mysql.jdbc.Driver
+  main:
+    show_banner: false

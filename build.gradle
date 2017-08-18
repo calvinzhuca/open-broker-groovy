@@ -1,0 +1,46 @@
+group 'testGroupId'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.M6")
+    }
+}
+
+jar {
+    baseName = 'open-broker-groovy'
+    version = '0.1.0'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile "org.springframework.boot:spring-boot-starter-web:0.5.0.M6"
+    compile "org.springframework.boot:spring-boot-starter-actuator:0.5.0.M6"
+    compile "org.springframework:spring-jdbc:4.0.0.M3"
+    compile "org.yaml:snakeyaml:1.13"
+    compile "org.codehaus.groovy.modules.http-builder:http-builder:0.7.1"
+    compile "org.json:json:20170516"
+    runtime "org.codehaus.jackson:jackson-mapper-asl:1.9.12"
+    runtime "mysql:mysql-connector-java:5.1.27"
+    runtime "org.apache.tomcat:tomcat-jdbc:7.0.47"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.9'
+}
